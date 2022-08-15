@@ -20,5 +20,11 @@
 .checkmark:after { content: ""; position: absolute; display: none }
 .duplicate p { padding-top: 2px; height: 22px; margin-left: 32px; line-height: 19px; font-size: 1rem; cursor: auto }
 
+/* radio */
+.radio .duplicate { margin-left: .7rem;}
+.radio .container .checkmark:after { left: 6.8px; top: 6px; width: 6.5px; height: 6.5px; background-color: white; border-radius: 25px; -webkit-transform: rotate(0); -ms-transform: rotate(0); transform: rotate(0) } 
+.radio .checkmark { border-radius: 25px; }
+.radio .duplicate p { margin-left: 28px; }
+
 /* input */
 input { width: 160px; padding: 10px 0 10px 12px; background-color: #f0f0f0; border: 0 solid white; border-radius: 8px; font-size: 18px; color: #999 }
