@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜덤 숫자 뽑기</title>
+
+    <!-- Facebook (Common) Open Graph -->
+    <meta property="og:type" content="미리보기 종류" />
+    <meta property="og:url" content="페이지 URL" />
+    <meta property="og:title" content="미리보기 제목" />
+    <meta property="og:description" content="미리보기 설명" />
+    <meta property="og:image" content="미리보기 이미지 주소" />
+
+    <!-- css -->
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/random.css" type="text/css">
+    <link rel="stylesheet" href="css/share.css" type="text/css">
+
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+</head>
+<style>
+    .result { width: 690px; min-height: 70px; height: fit-content; margin-top: 1rem; border: 1px solid #02bb8c; border-radius: 12px; }
+    .result span { padding: 1rem 2rem; font-size: 2rem; color: #fc8484; }
+    .span { width: 50px; text-align: center; }
+    
+    .numbers { position: relative; display: flex; flex-wrap: wrap; }
+</style>
+
+<body>
+    <div class="main el-center">
+        <h1>랜덤 숫자 뽑기</h1>
+        
+        <div>
+            <div class="df">
+                <div>
+                    <!-- number range -->
+                    <div class="range df">
+                        <h2>숫자 범위 : </h2>
+                        <div class="df">
+                            <input type="number" id="start-number" value="1" placeholder="시작 숫자">
+                            <span>~</span>
+                            <input type="number" id="end-number" value="5" placeholder="마지막 숫자">
+                        </div>
+                    </div>
+
+                    <!-- number count -->
+                    <div class="count df">
+                        <h2>추첨수 : </h2>
+                        <input type="number" value="1" id="length" placeholder="뽑을 숫자 개수">
+
+                        <!-- duplicate check -->
+                        <div class="duplicate">
+                            <label for="duplicate" class="container">
+                                <input type="checkbox" id="duplicate" checked />
+                                <span class="checkmark"></span>
+                                <p>중복없이</p>
+                            </label>
+                        </div>
+                        
+                        <div class="duplicate">
+                            <label for="raffle_type" class="container">
+                                <input type="radio" name="raffle_type" value="0" checked>
+                                <span class="checkmark"></span>
+                                <p>한 번에</p>
+                            </label>
+                        </div>
+                        <div class="duplicate">
+                            <label for="raffle_type" class="container">
+                                <input type="radio" name="raffle_type" value="1">
+                                <span class="checkmark"></span>
+                                <p>한 개씩</p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- get random number button -->
+                <button type="button" class="btn btn-number btn-lottery" id="btn-get-number">뽑기</button>
+            </div>
+
+            <!-- icons -->
+            <div class="icons">
+                <span id="btnTwitter" class="link-icon twitter" onclick="shareTwitter();"></span>
+                <span id="btnFacebook" class="link-icon facebook" onclick="shareFacebook();"></span>    
+                <span id="btnKakao" class="link-icon kakao" onclick="shareKakao();"></span>
+                <span id="btnBand" class="link-icon band" onclick="shareBand();"></span>
+                <span id="btnUrl" class="link-icon url" onclick="shareUrl();"></span>
+            </div>
+
+            <!-- result -->
+            <div class="result">
+                <div class="el-center">
+                    <div class="numbers">
+                        <!-- <span class="num">10</span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript" src="/js/share.js"></script>
+</body>
+<script>
+    const btnGetNumber = document.getElementById('btn-get-number');
+
+    if (btnGetNumber) {
+        btnGetNumber.addEventListener('click', () => {
+
+            let max = parseInt(document.getElementById('end-number').value);
+            let min = parseInt(document.getElementById('start-number').value);
+            const length = parseInt(document.getElementById('length').value);
+
+
+            if (min > max) {
+                let temp = max;
+                max = min;
+                min = temp;
+            }
+
+            if (max < 1 || min < 1 || length < 1) {
+                alert('0 이하는 사용할 수 없습니다.');
+                return 0;
+
+            } else if (max - min + 1 < length) {
+                alert('뽑을 숫자가 너무 많습니다.');
+                return 0;
+            }
+
+            downButton();
+
+            const duplicate = document.getElementById('duplicate').checked;
+            const numbers = document.getElementsByClassName('numbers')[0];
+            const arr = new Array(max - min + 1).fill(false);
+
+            numbers.innerHTML = '';
+
+            for (let i = 0; i < length; i++) {
+                const span = document.createElement('span');
+                span.classList.add('span')
+                span.innerText = 0;
+                numbers.appendChild(span);
+
+                (function (i) {
+                    setTimeout(() => {
+                        const span = document.getElementsByClassName('span')[i];
+
+                        let speed = 0;
+                        let changeInterval = null;
+
+                        const j = length > 20 ? 100 :
+                                (length > 10 ? 350 : 700);
+
+                        let previousRandom = 0;
+                        let interval = setInterval(() => {
+                            speed += 10;
+                            arr[previousRandom - min] = false
+                            
+                            let random = Math.floor(Math.random() * (max - min + 1)) + min;
+                            while (arr[random - min]) {
+                                random = Math.floor(Math.random() * (max - min + 1)) + min;
+                            }
+
+                            if (duplicate) arr[random - min] = true;
+
+                            span.innerText = random;
+                            previousRandom = random;
+                        }, 30);
+
+                        setTimeout(() => {
+                            clearInterval(interval);
+                            clearInterval(changeInterval);
+
+                            operateButton();
+                        }, 4000 + i * j);
+                    }, 100);
+                })(i);
+            }
+        });
+    }
+</script>
+
+</html>

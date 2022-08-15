@@ -1,0 +1,24 @@
+.main {position: relative; top: 20%; transform: translateY(-20%);}
+.main h1 { padding-top: 200px; margin-bottom: 1rem; }
+.main h2 { margin-right: .8rem; }
+
+.range { margin-bottom: .75rem; }
+.range span { display: block; margin: 0 10px; font-size: 2em; font-weight: bold; }
+
+/* button */
+.btn-lottery { margin-left: 1.78rem; padding: 33px 50px; border-radius: 16px; font-size: 24px; }
+
+/* checkbox */
+.duplicate { display: flex; margin: .6rem 0 0 1rem;; }
+.container { display: block; position: relative; height: fit-content; cursor: pointer; width: fit-content; margin-right: 10px; }
+.container input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0 }
+.container:hover input ~ .checkmark { border-color: rgb(100, 100, 100) }
+.container input:checked ~ .checkmark { background-color: #02bb8c; border: none }
+.container input:checked ~ .checkmark:after { display: block }
+.container .checkmark:after { left: 8px; top: 2.5px; width: 5px; height: 10px; border: solid white; border-width: 0 2px 2.5px 0; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg) } 
+.checkmark { position: absolute; top: 0; left: 0; height: 22px; width: 22px; background-color: white; border: 0.5px solid #ccc; border-radius: 4px; box-sizing: border-box }
+.checkmark:after { content: ""; position: absolute; display: none }
+.duplicate p { padding-top: 2px; height: 22px; margin-left: 32px; line-height: 19px; font-size: 1rem; cursor: auto }
+
+/* input */
+input { width: 160px; padding: 10px 0 10px 12px; background-color: #f0f0f0; border: 0 solid white; border-radius: 8px; font-size: 18px; color: #999 }

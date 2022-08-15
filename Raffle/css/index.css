@@ -1,0 +1,31 @@
+/* 드래그 금지 */
+/* body { -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none } */
+
+html, body { width: 100%; height: 100%; margin: 0; }
+/* body { overflow-y: scroll; } */
+h1, h2, p, span { margin: 0; padding: 0; }
+* { font-family: Work Sans,Open Sans,Helvetica,Arial,sans-serif; }
+
+.df { display: flex; }
+.dn { display: none; }
+.wf { width: fit-content; }
+.el-center { width: fit-content; margin: auto; }
+
+
+.btn {
+    display: block;
+    font-family: Work Sans,Open Sans,Helvetica,Arial,sans-serif;
+    padding: 10px 40px;
+    font-size: 14px;
+    line-height: inherit;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-transition: color .25s, background .25s ease-in-out; /* Safari */
+    transition: color .25s, background .25s ease-in-out;
+}
+.btn.btn-word { color: #fff !important; background-color: #9884fc; border-color: #9884fc; font-weight: 500; line-height: inherit; }
+.btn.btn-number { color: #02bb8c; background: none; border-color: #02bb8c;}
+.btn.btn-word:hover { background-color: #02bb8c; border-color: #02bb8c; }
+.btn.btn-number:hover { color: white; background: #02bb8c; }

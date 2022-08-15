@@ -4,23 +4,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>커피 추첨기</title>
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/index.css" type="text/css">
 </head>
-<!-- 
-    인스턴트 추첨
-    (이름)
 
-    슬로 추첨
-    
-    
-    추첨 설명
+<style>
+    .main { position: relative; top: 40%; transform: translateY(-50%); }
+    .main h1 { margin-bottom: 1rem; }
+    .main h2 { margin-bottom: 0.8rem; }
+    .main div + div { margin-left: 2rem; }
 
+    @media only screen and (max-width: 360px) {
+        html { font-size: 12px !important; }
+    }
 
- -->
+    @media only screen and (max-width: 260px) {
+        .df { display: block !important; }
+        .main div + div { margin-top: 20px; margin-left: 0px; }
+    }
+</style>
+
 <body>
-    <article>
-        <button onclick="location.href='./instant_raffle.html';">인스턴트 추첨</button>
-        <button>보너스 추첨</button>
-    </article>
+    <div class="main el-center">
+        <h1 class="el-center">무작위 추첨기</h1>
+
+        <article id="main_raffle">
+            <div class="df">
+                <div>
+                    <h2>인스턴스 랜덤 뽑기</h2>
+                    <a href="javascript:void(0);" onclick="showMenu('instant')" rel="인스턴스 랜덤 뽑기" class="btn btn-number  el-center">Click</a>
+                </div>
+                <div>
+                    <h2>슬로 랜덤 뽑기</h2>
+                    <a href="javascript:void(0);" onclick="showMenu('slow')" rel="슬로 단어 뽑기" class="btn btn-word el-center">Click</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="dn" id="slow_raffle">
+            <div class="df">
+                <div>
+                    <h2>숫자 랜덤 뽑기</h2>
+                    <a href="randomNumber.html" rel="숫자 랜덤 뽑기" class="btn btn-number  el-center">Click</a>
+                </div>
+                <div>
+                    <h2>단어 랜덤 뽑기</h2>
+                    <a href="randomWord.html" rel="숫자 단어 뽑기" class="btn btn-word el-center">Click</a>
+                </div>
+            </div>
+        </article>
+        <article class="dn" id="instant_raffle">
+            <div class="df">
+                <div>
+                    <h2>숫자 랜덤 뽑기</h2>
+                    <a href="/randomNumber.html" rel="숫자 랜덤 뽑기" class="btn btn-number  el-center">Click</a>
+                </div>
+                <div>
+                    <h2>단어 랜덤 뽑기</h2>
+                    <a href="/randomWord.html" rel="숫자 단어 뽑기" class="btn btn-word el-center">Click</a>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

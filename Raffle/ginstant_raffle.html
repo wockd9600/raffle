@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- <style>
+    .box {
+        width: 150px;
+        height: 150px;
+        margin: .4rem;
+        background: #febf00;
+        cursor: pointer;
+    }
+
+    .box.vibration {
+        animation: vibration .12s infinite;
+    }
+
+    @keyframes vibration {
+        from {
+            transform: rotate(15deg);
+        }
+        to {
+            transform: rotate(-10deg);
+        }
+    }
+
+
+    /* ----------------------- */
+
+    .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+            
+        margin-right: 2rem;
+            
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    .box:last-child {
+        background: #3dc7f0; 
+    }
+</style> -->
+
+<!-- 
+    인스턴트 추첨 추첨기
+
+    1. textarea 로 리스트 받기
+    2. 클릭 시 뽑기 (한 번에 뽑기, 한 번씩 뽑기)
+
+ -->
+<body>
+    <h1>무작위 추첨기(랜덤 뽑기)</h1>
+    <article>
+        <p>뽑기 방식</p>
+        <input type="radio" name="raffle_type" value="0">한 번에
+        <input type="radio" name="raffle_type" value="1" checked>한 개씩
+    </article>
+    
+    <label for="raffle_count">추첨수</label>
+    <input type="number" id="raffle_count" name="raffle_count" value="1"><br>
+    
+    <article>
+        <h3 id="result s"></h3>
+    </article>
+
+    <article>
+        <textarea style="resize: none;"
+        name="ir" id="ir"
+        placeholder="한 줄에 한 개씩 입력해 주세요(엔터로 구분)"
+        cols="30" rows="10"></textarea>
+        
+        <button id="get_result">뽑기</button><br>
+    </article>
+
+    <!-- <div class="box" onclick="vibration(this)">Click</div> -->
+
+    <script type="text/javascript" src="/js/instant_raffle.js" defer></script>
+</body>
+</html>
