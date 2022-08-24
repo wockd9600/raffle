@@ -97,13 +97,14 @@
 
             target.classList.add("vibration");
             
+            const url = "https://f1he1h1vmf.execute-api.ap-northeast-2.amazonaws.com/prod/stories"
             // 코드
-            fetch("https://rclm4c5le1.execute-api.ap-northeast-2.amazonaws.com/dev/stories", {
+            fetch(url, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ name }),
+                body: JSON.stringify({ "name": name }),
             })
             .then((response) => console.log(response))
             .catch((error) => console.log("error:", error));
