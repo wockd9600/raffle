@@ -107,7 +107,7 @@
                 body: JSON.stringify({ "name": name }),
             })
             .then((response) => response.json())
-            .tehn(data => console.log(data))
+            .tehn((data) => console.log(data))
             .catch((error) => console.log("error:", error));
 
             setTimeout(function () {
