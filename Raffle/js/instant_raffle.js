@@ -57,11 +57,3 @@ document.getElementById('get_result').addEventListener('click', () => {
     
     // instant_raffle();
 });
-
-const vibration = (target) => {
-    target.classList.add("vibration");
-
-    setTimeout(function () {
-        target.classList.remove("vibration");
-    }, 2900);
-}

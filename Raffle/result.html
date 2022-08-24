@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 150px;
+        height: 150px;
+        margin: .4rem;
+        /* background: #febf00; */
+        cursor: pointer;
+    }
+
+    .box.vibration {
+        animation: vibration .11s infinite;
+    }
+
+    @keyframes vibration {
+        from {
+            transform: rotate(20deg);
+        }
+        to {
+            transform: rotate(-10deg);
+        }
+    }
+
+
+    /* ----------------------- */
+
+    .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+            
+        margin-right: 2rem;
+            
+        font-size: 1.4rem;
+        font-weight: bold;
+        background-image: url('/img/gift-box.png');
+        background-size: cover;
+    }
+
+    .box:last-child {
+        background: #3dc7f0; 
+    }
+
+    .wrap {
+        position: absolute;
+        display: none;
+    }
+
+    .circle1 {
+        position: relative;
+        width: 320px;
+        height: 320px;
+        /* 추가된 부분 */
+        animation: scale1 2s;
+        background-image: url("img/explosion.png");
+        background-size: cover;
+    }
+
+    .result {
+        position: absolute;
+        top: 100px;
+        left: 105px;
+        font-size: 3rem;
+        animation: scale1 2s;
+    }
+
+    @keyframes scale1 {
+        0%   { transform: scale(0) }
+        100%  { transform: scale(1) }
+    }
+
+</style>
+
+<body>
+    <div class="wrap">
+        <div class="circle1"></div>
+        <p class="result">꽝꽝</p>
+    </div>
+    <div class="box" onclick="vibration(this)"></div>
+    <input type="text" id="name" name="name" style="font-size: 20px;" placeholder="이름을 입력하세요">
+
+    <script>
+        const vibration = (target) => {
+            const name = document.getElementById('name').value;
+            
+            if (name === '') {
+                alert('이름을 입력해주세요~');
+                return 0;
+            }
+
+            target.classList.add("vibration");
+            
+            // 코드
+            fetch("https://rclm4c5le1.execute-api.ap-northeast-2.amazonaws.com/dev/stories", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name }),
+            })
+            .then((response) => console.log(response))
+            .catch((error) => console.log("error:", error));
+
+            setTimeout(function () {
+                document.getElementsByClassName('wrap')[0].style.display = 'block';
+                target.classList.remove("vibration");
+            }, 2600);
+        }
+    </script>
+</body>
+</html>
