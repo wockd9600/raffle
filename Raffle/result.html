@@ -107,7 +107,7 @@
                 body: JSON.stringify({ "name": name }),
             })
             .then((response) => response.json())
-            .then((data) => console.log(data))
+            .then((data) => document.getElementsByClassName('result')[0].innerText = data ? '당첨' : '꽝꽝' )
             .catch((error) => console.log("error:", error));
 
             setTimeout(function () {
