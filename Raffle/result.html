@@ -111,7 +111,7 @@
                 console.log(data);
                 document.getElementsByClassName('result')[0].innerText = data.result ? '당첨' : '꽝꽝' );
                 alert(`확률은 ${data.percent}% 입니다`);
-            }
+            })
             .catch((error) => console.log("error:", error));
 
             setTimeout(function () {
