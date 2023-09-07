@@ -1,6 +1,15 @@
-.main {position: relative; top: 20%; transform: translateY(-20%);}
-.main h1 { padding-top: 200px; margin-bottom: 1rem; }
-.main h2 { margin-right: .8rem; }
+.main { position: relative; top: 50%; transform: translateY(-50%); }
+.main h1 { margin-bottom: 1rem; }
+
+.raffle-body h2 { margin-right: .8rem; }
+
+.other-raffle {
+    position: absolute;
+    top: 1.5%;
+    right: 1.5%;
+}
+.other-raffle h2 { margin-bottom: 0.4rem; }
+
 
 .range { margin-bottom: .75rem; }
 .range span { display: block; margin: 0 10px; font-size: 2em; font-weight: bold; }

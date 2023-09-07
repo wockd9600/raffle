@@ -14,9 +14,9 @@
     <meta property="og:image" content="미리보기 이미지 주소" />
 
     <!-- css -->
-    <link rel="stylesheet" href="css/index.css" type="text/css">
-    <link rel="stylesheet" href="css/random.css" type="text/css">
-    <link rel="stylesheet" href="css/share.css" type="text/css">
+    <link rel="stylesheet" href="./css/index.css" type="text/css">
+    <link rel="stylesheet" href="./css/random.css" type="text/css">
+    <link rel="stylesheet" href="./css/share.css" type="text/css">
 
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
@@ -32,7 +32,7 @@
     <div class="main el-center">
         <h1>랜덤 숫자 뽑기</h1>
         
-        <div>
+        <div class="raffle-body">
             <div class="df">
                 <div>
                     <!-- number range -->
@@ -98,9 +98,17 @@
             </div>
         </div>
     </div>
+    
+    <div class="other-raffle">
+        <!-- <div class="el-center"> -->
+            <h2>단어 랜덤 뽑기</h2>
+            <a href="randomWord.html" rel="숫자 단어 뽑기" class="btn btn-word el-center">Click</a>
+        <!-- </div> -->
+    </div>
 
-    <script type="text/javascript" src="/js/index.js"></script>
-    <script type="text/javascript" src="/js/share.js"></script>
+
+    <script type="text/javascript" src="./js/index.js"></script>
+    <script type="text/javascript" src="./js/share.js"></script>
 </body>
 <script>
     const btnGetNumber = document.getElementById('btn-get-number');

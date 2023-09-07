@@ -20,10 +20,12 @@ const operateButton = () => {
     }
 }
 
-const showMenu = (type) => {
-    document.getElementById('main_raffle').style.display = 'none';
-    document.getElementById('instant_raffle').style.display = 'none';
-    document.getElementById('slow_raffle').style.display = 'none';
-    console.log(type)
-    document.getElementById(`${type}_raffle`).style.display = 'block';
-}
+
+
+// const showMenu = (type) => {
+//     document.getElementById('main_raffle').style.display = 'none';
+//     document.getElementById('instant_raffle').style.display = 'none';
+//     document.getElementById('slow_raffle').style.display = 'none';
+//     console.log(type)
+//     document.getElementById(`${type}_raffle`).style.display = 'block';
+// }

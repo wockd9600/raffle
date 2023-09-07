@@ -2,15 +2,15 @@
 .icons { width: fit-content; margin: auto; margin-top: 10px;}
 .icons span { cursor: pointer; }
 .link-icon { position: relative; display: inline-block; margin-right: 10px; height: 40px; width: 40px; font-size: 14px; font-weight: 500; color: #333; }
-.link-icon.twitter { background: url(/img/icon-twitter.png); background-repeat: no-repeat; }
-.link-icon.facebook { background: url(/img/icon-facebook.png); background-repeat: no-repeat; } 
-.link-icon.kakao { background: url(/img/icon-kakao.png); background-repeat: no-repeat; }
-.link-icon.band { background: url(/img/icon-band.png); background-size: 40px 40px; background-repeat: no-repeat;
+.link-icon.twitter { background: url(../img/icon-twitter.png); background-repeat: no-repeat; }
+.link-icon.facebook { background: url(../img/icon-facebook.png); background-repeat: no-repeat; } 
+.link-icon.kakao { background: url(../img/icon-kakao.png); background-repeat: no-repeat; }
+.link-icon.band { background: url(../img/icon-band.png); background-size: 40px 40px; background-repeat: no-repeat;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     border-radius: 50px;
 }
-.link-icon.url { background: url(/img/icon-url.png); background-size: 37px 38px; background-repeat: no-repeat; border: 2px solid black; box-sizing: border-box;
+.link-icon.url { background: url(../img/icon-url.png); background-size: 37px 38px; background-repeat: no-repeat; border: 2px solid black; box-sizing: border-box;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     border-radius: 50px;
