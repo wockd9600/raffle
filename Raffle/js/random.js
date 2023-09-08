@@ -15,7 +15,7 @@ function getObjForStartRaffle(arr) {
 
     downButton();
 
-
+    const viewNow = parseInt(document.querySelector('input[name="raffle_type"]:checked').value);
     const duplicate = document.getElementById('duplicate').checked;
     const box = document.getElementsByClassName('result_box')[0];
 
@@ -33,5 +33,6 @@ function getObjForStartRaffle(arr) {
         result_number,
         duplicate,
         box,
+        viewNow,
     }
 }
