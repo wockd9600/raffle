@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,17 +22,37 @@
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <style>
-    .result { width: 690px; min-height: 70px; height: fit-content; margin-top: 1rem; border: 1px solid #02bb8c; border-radius: 12px; }
-    .result span { padding: 1rem 2rem; font-size: 2rem; color: #fc8484; }
-    .span { width: 50px; text-align: center; }
-    
-    .numbers { position: relative; display: flex; flex-wrap: wrap; }
+    .result {
+        width: 737px;
+        min-height: 70px;
+        height: fit-content;
+        margin-top: 1rem;
+        border: 1px solid #02bb8c;
+        border-radius: 12px;
+    }
+
+    .result span {
+        padding: 1rem 2rem;
+        font-size: 2rem;
+        color: #fc8484;
+    }
+
+    .span {
+        width: 50px;
+        text-align: center;
+    }
+
+    .result_box {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+    }
 </style>
 
 <body>
     <div class="main el-center">
         <h1>랜덤 숫자 뽑기</h1>
-        
+
         <div class="raffle-body">
             <div class="df">
                 <div>
@@ -48,7 +69,7 @@
                     <!-- number count -->
                     <div class="count df">
                         <h2>추첨수 : </h2>
-                        <input type="number" value="1" id="length" placeholder="뽑을 숫자 개수">
+                        <input type="number" value="1" id="result_number" placeholder="뽑을 숫자 개수">
 
                         <!-- duplicate check -->
                         <div class="duplicate">
@@ -58,7 +79,7 @@
                                 <p>중복없이</p>
                             </label>
                         </div>
-                        
+
                         <div class="duplicate radio">
                             <label for="at_once" class="container">
                                 <input type="radio" id="at_once" name="raffle_type" value="0" checked>
@@ -82,7 +103,7 @@
             <!-- icons -->
             <div class="icons">
                 <span id="btnTwitter" class="link-icon twitter" onclick="shareTwitter();"></span>
-                <span id="btnFacebook" class="link-icon facebook" onclick="shareFacebook();"></span>    
+                <span id="btnFacebook" class="link-icon facebook" onclick="shareFacebook();"></span>
                 <span id="btnKakao" class="link-icon kakao" onclick="shareKakao();"></span>
                 <span id="btnBand" class="link-icon band" onclick="shareBand();"></span>
                 <span id="btnUrl" class="link-icon url" onclick="shareUrl();"></span>
@@ -91,26 +112,30 @@
             <!-- result -->
             <div class="result">
                 <div class="el-center">
-                    <div class="numbers">
+                    <div class="result_box">
                         <!-- <span class="num">10</span> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="other-raffle">
         <!-- <div class="el-center"> -->
-            <h2>단어 랜덤 뽑기</h2>
-            <a href="randomWord.html" rel="숫자 단어 뽑기" class="btn btn-word el-center">Click</a>
+        <h2>단어 랜덤 뽑기</h2>
+        <a href="randomWord.html" rel="숫자 단어 뽑기" class="btn btn-word el-center">Click</a>
         <!-- </div> -->
     </div>
 
 
     <script type="text/javascript" src="./js/index.js"></script>
     <script type="text/javascript" src="./js/share.js"></script>
+    <script type="text/javascript" src="./js/random.js"></script>
 </body>
-<script>
+
+<script type="module">
+    import { startRaffle } from "./js/util.js";
+
     const btnGetNumber = document.getElementById('btn-get-number');
 
     if (btnGetNumber) {
@@ -118,73 +143,16 @@
 
             let max = parseInt(document.getElementById('end-number').value);
             let min = parseInt(document.getElementById('start-number').value);
-            const length = parseInt(document.getElementById('length').value);
+
+            if (min > max) [max, min] = [min, max];
 
 
-            if (min > max) {
-                let temp = max;
-                max = min;
-                min = temp;
-            }
+            const arr = Array.from({ length: max - min + 1 }, (_, index) => min + index);
+            const obj = getObjForStartRaffle(arr);
 
-            if (max < 1 || min < 1 || length < 1) {
-                alert('0 이하는 사용할 수 없습니다.');
-                return 0;
+            if (!obj) return;
 
-            } else if (max - min + 1 < length) {
-                alert('뽑을 숫자가 너무 많습니다.');
-                return 0;
-            }
-
-            downButton();
-
-            const duplicate = document.getElementById('duplicate').checked;
-            const numbers = document.getElementsByClassName('numbers')[0];
-            const arr = new Array(max - min + 1).fill(false);
-
-            numbers.innerHTML = '';
-
-            for (let i = 0; i < length; i++) {
-                const span = document.createElement('span');
-                span.classList.add('span')
-                span.innerText = 0;
-                numbers.appendChild(span);
-
-                (function (i) {
-                    setTimeout(() => {
-                        const span = document.getElementsByClassName('span')[i];
-
-                        let speed = 0;
-                        let changeInterval = null;
-
-                        const j = length > 20 ? 100 :
-                                (length > 10 ? 350 : 700);
-
-                        let previousRandom = 0;
-                        let interval = setInterval(() => {
-                            speed += 10;
-                            arr[previousRandom - min] = false
-                            
-                            let random = Math.floor(Math.random() * (max - min + 1)) + min;
-                            while (arr[random - min]) {
-                                random = Math.floor(Math.random() * (max - min + 1)) + min;
-                            }
-
-                            if (duplicate) arr[random - min] = true;
-
-                            span.innerText = random;
-                            previousRandom = random;
-                        }, 30);
-
-                        setTimeout(() => {
-                            clearInterval(interval);
-                            clearInterval(changeInterval);
-
-                            operateButton();
-                        }, 4000 + i * j);
-                    }, 100);
-                })(i);
-            }
+            startRaffle(obj);
         });
     }
 </script>
