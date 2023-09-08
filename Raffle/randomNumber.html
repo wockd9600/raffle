@@ -144,6 +144,7 @@
             let max = parseInt(document.getElementById('end-number').value);
             let min = parseInt(document.getElementById('start-number').value);
 
+            if (isNaN(max) || isNaN(min)) return alert('숫자만 입력해주세요.')
             if (min > max) [max, min] = [min, max];
 
 
@@ -152,7 +153,17 @@
 
             if (!obj) return;
 
-            startRaffle(obj);
+            startRaffle(obj)
+                .then((result) => {
+                    const { arr, count } = result;
+                    console.log(arr)
+                    console.log(count)
+                    const checkResult = arr.filter((_, index) => count[index] !== 0 );
+                    console.log(checkResult)
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
         });
     }
 </script>

@@ -7,6 +7,7 @@
 
     
  -->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,17 +27,60 @@
     <link rel="stylesheet" href="css/share.css" type="text/css">
 </head>
 <style>
-    .result { width: 690px; min-height: 70px; height: fit-content; margin-top: 1rem; border: 1px solid #9884fc; border-radius: 12px; }
-    .result span { display: block !important; padding: .5rem 2rem; font-size: 2rem; color: #fc8484; }
-    .result span { width: fit-content; margin-right: 0; text-align: center; }
-    .span { width: 50px; text-align: center; }
-    
-    .numbers { position: relative; display: flex; flex-wrap: wrap; }
-    
-    .container input:checked ~ .checkmark { background-color: #9884fc; border: none }
+    .result {
+        width: 690px;
+        min-height: 70px;
+        height: fit-content;
+        margin-top: 1rem;
+        border: 1px solid #9884fc;
+        border-radius: 12px;
+    }
 
-    textarea { width: 510px; height: 144px; padding: 10px 0 10px 12px; border: 1px solid #9884fc; border-radius: 8px; font-size: 18px; color: rgb(0, 0, 0); box-sizing: border-box; }
-    textarea:focus {  outline: none !important; border-color: #02bb8c; box-shadow: 0 0 3px #02bb8c; }
+    .result span {
+        display: block !important;
+        padding: .5rem 2rem;
+        font-size: 2rem;
+        color: #fc8484;
+    }
+
+    .result span {
+        width: fit-content;
+        margin-right: 0;
+        text-align: center;
+    }
+
+    .span {
+        width: 50px;
+        text-align: center;
+    }
+
+    .numbers {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .container input:checked~.checkmark {
+        background-color: #9884fc;
+        border: none
+    }
+
+    textarea {
+        width: 510px;
+        height: 144px;
+        padding: 10px 0 10px 12px;
+        border: 1px solid #9884fc;
+        border-radius: 8px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        box-sizing: border-box;
+    }
+
+    textarea:focus {
+        outline: none !important;
+        border-color: #02bb8c;
+        box-shadow: 0 0 3px #02bb8c;
+    }
 </style>
 
 <body>
@@ -58,19 +102,35 @@
                                 <p>중복없이</span>
                             </label>
                         </div>
+
+                        <div class="duplicate radio">
+                            <label for="at_once" class="container">
+                                <input type="radio" id="at_once" name="raffle_type" value="1">
+                                <span class="checkmark"></span>
+                                <p>한 번에</p>
+                            </label>
+                        </div>
+                        <div class="duplicate radio ml0">
+                            <label for="one_time" class="container">
+                                <input type="radio" id="one_time" name="raffle_type" value="0" checked>
+                                <span class="checkmark"></span>
+                                <p>한 개씩</p>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="df" style="margin-top: 1rem;">
                     <textarea name="word" id="word" placeholder="단어를 엔터로 구분합니다."></textarea>
                     <!-- get random number button -->
-                    <button type="button" class="btn btn-word btn-lottery" style="height: 150px" id="btn-get-word">뽑기</button>
+                    <button type="button" class="btn btn-word btn-lottery" style="height: 150px"
+                        id="btn-get-word">뽑기</button>
                 </div>
             </div>
 
             <!-- icons -->
             <div class="icons">
                 <span id="btnTwitter" class="link-icon twitter" onclick="shareTwitter();"></span>
-                <span id="btnFacebook" class="link-icon facebook" onclick="shareFacebook();"></span>    
+                <span id="btnFacebook" class="link-icon facebook" onclick="shareFacebook();"></span>
                 <span id="btnKakao" class="link-icon kakao" onclick="shareKakao();"></span>
                 <span id="btnBand" class="link-icon band" onclick="shareBand();"></span>
                 <span id="btnUrl" class="link-icon url" onclick="shareUrl();"></span>
@@ -112,12 +172,23 @@
             const word = document.getElementById('word');
             const wordList = word.value.split('\n').filter((element) => element !== '');
 
+            if (wordList.length === 0) return alert('뽑을 단어를 적어주세요.');
 
             const obj = getObjForStartRaffle(wordList);
 
             if (!obj) return;
 
-            startRaffle(obj);
+            startRaffle(obj)
+                .then((result) => {
+                    const { arr, count } = result;
+                    console.log(arr)
+                    console.log(count)
+                    const checkResult = arr.filter((_, index) => count[index] !== 0 );
+                    console.log(checkResult)
+                })
+                .catch((error) => {
+                    console.error(error);
+                });;
         });
     }
 </script>
