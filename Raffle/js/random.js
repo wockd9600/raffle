@@ -1,3 +1,7 @@
+function addValueResultUrl(value) {
+    document.getElementById('resultUrl').innerHTML += encodeURIComponent(value);
+}
+
 function getShuffledArr(arr) {
     const shuffledArr = [...arr];
     // Fisher-Yates shuffle

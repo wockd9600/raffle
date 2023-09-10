@@ -31,7 +31,7 @@
     }
 
     .result span {
-        padding: 1rem 2rem;
+        padding: 1rem 1.5rem;
         font-size: 2rem;
         color: #fc8484;
     }
@@ -45,6 +45,7 @@
         position: relative;
         display: flex;
         flex-wrap: wrap;
+        margin-left: 1.5rem;
     }
 
     .btn-display-result { margin-left: 0;}
@@ -90,22 +91,31 @@
 
     const btnGetNumber = document.getElementsByClassName('btn-display-result')[0];
 
+    
     if (btnGetNumber) {
         btnGetNumber.addEventListener('click', () => {
 
-            const result = [1, 2, 2, 4, 5, 6, 7, 8];
+            const currentUrl = window.location.href;
 
-            const max = 10;
-            const min = 1;
+            // const currentUrl = decodeURI('http://192.168.1.44:5500/Raffle/randomNumber.html?query=50-1-1-0-12_41_10_8');
+            const queryString = currentUrl.split('query=')[1];
+            const objArr = queryString.split('-');
 
-            const viewNow = 1;
-            const duplicate = 1;
+            
+            const max = parseInt(objArr[0]);
+            const min = parseInt(objArr[1]);
+
 
             const box = document.getElementsByClassName('result_box')[0];
             box.innerHTML = '';
 
             if (isNaN(max) || isNaN(min)) return alert('잘못된 주소입니다.')
             if (min > max) [max, min] = [min, max];
+
+            const viewNow = parseInt(objArr[2]);
+            const duplicate = parseInt(objArr[3]);
+            
+            const result = objArr[4].split('_');
             
             const arr = Array.from({ length: max - min + 1 }, (_, index) => min + index);
             const shuffledArr = getShuffledArr(arr);

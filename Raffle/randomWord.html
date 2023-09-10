@@ -1,13 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- 
-
-
-
-
-    
- -->
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -156,10 +148,7 @@
     </div>
 
 
-    <div class="dn" id="resultArr"></div>
-    <div class="dn" id="resultCount"></div>
-    <div class="dn" id="resultViewNow"></div>
-    <div class="dn" id="resultDuplicate"></div>
+    <div class="dn" id="resultUrl"></div>
 
 
     <script type="text/javascript" src="./js/index.js"></script>
@@ -184,18 +173,20 @@
 
             if (!obj) return;
 
-
-            document.getElementById('resultViewNow').innerHTML = obj.viewNow;
-            document.getElementById('resultDuplicate').innerHTML = obj.duplicate;
-
+            document.getElementById('resultUrl').innerHTML = '';
+            addValueResultUrl(`${obj.viewNow}-`);
+            addValueResultUrl(`${obj.duplicate ? 1 : 0}-`);
 
 
             startRaffle(obj)
                 .then((result) => {
                     const { arr, count } = result;
 
-                    document.getElementById('resultArr').innerHTML = arr;
-                    document.getElementById('resultCount').innerHTML = count;
+                    const resultString = arr.join("_");
+                    const countString = count.join("_");
+
+                    addValueResultUrl(`${resultString}-`);
+                    addValueResultUrl(countString);
                 })
                 .catch((error) => {
                     console.error(error);

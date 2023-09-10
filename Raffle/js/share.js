@@ -1,6 +1,7 @@
 function shareTwitter() {
     const sendText = "뽑기 결과입니다.";
     const sendUrl = getSendUrl();
+    console.log(sendUrl)
     window.open(`https://twitter.com/intent/tweet?text=${sendText}%0A%0D%0A&&url=${sendUrl}`);
 }
 
@@ -81,5 +82,6 @@ function shareUrl() {
 }
 
 function getSendUrl() {
-    return encodeURIComponent("http://192.168.1.44:5500/Raffle/randomNumber.html")
+    const router = 'randomNumber';
+    return encodeURIComponent(`http://192.168.1.44:5500/Raffle/${router}.html?query=${document.getElementById('resultUrl').innerHTML}`);
 }

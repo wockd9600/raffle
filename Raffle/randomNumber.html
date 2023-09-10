@@ -32,7 +32,7 @@
     }
 
     .result span {
-        padding: 1rem 2rem;
+        padding: 1rem 1.5rem;
         font-size: 2rem;
         color: #fc8484;
     }
@@ -46,6 +46,7 @@
         position: relative;
         display: flex;
         flex-wrap: wrap;
+        margin-left: 1.5rem;
     }
 </style>
 
@@ -128,11 +129,7 @@
         <!-- </div> -->
     </div>
 
-    <div class="dn" id="resultArr"></div>
-    <div class="dn" id="resultMax"></div>
-    <div class="dn" id="resultMin"></div>
-    <div class="dn" id="resultViewNow"></div>
-    <div class="dn" id="resultDuplicate"></div>
+    <div class="dn" id="resultUrl"></div>
 
     <script type="text/javascript" src="./js/index.js"></script>
     <script type="text/javascript" src="./js/share.js"></script>
@@ -161,17 +158,19 @@
             if (!obj) return;
 
             
-            document.getElementById('resultMax').innerHTML = max;
-            document.getElementById('resultMin').innerHTML = min;
-            document.getElementById('resultViewNow').innerHTML = obj.viewNow;
-            document.getElementById('resultDuplicate').innerHTML = obj.duplicate;
+            document.getElementById('resultUrl').innerHTML = '';
+            addValueResultUrl(`${max}-`);
+            addValueResultUrl(`${min}-`);
+            addValueResultUrl(`${obj.viewNow}-`);
+            addValueResultUrl(`${obj.duplicate ? 1 : 0}-`);
 
 
 
             startRaffle(obj)
                 .then((result) => {
                     const { arr, count } = result;
-                    document.getElementById('resultArr').innerHTML = arr.filter((_, index) => count[index] !== 0 );
+                    const resultString = arr.filter((_, index) => count[index] !== 0 ).join("_");
+                    addValueResultUrl(resultString);
                     // document.getElementById('resultCount').innerHTML = count;
                     // const checkResult = arr.filter((_, index) => count[index] !== 0 );
                 })
