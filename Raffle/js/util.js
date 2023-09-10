@@ -12,7 +12,7 @@ function startRaffle(data) {
         }
 
 
-        const j = viewNow ? 30 : 700;
+        const j = viewNow ? 30 : 1500;
 
         for (let i = 0; i < result_number; i++) {
             const span = document.createElement('span');
@@ -33,7 +33,7 @@ function startRaffle(data) {
                         do {
                             index = index < length - 1 ? index + 1 : 0;
                             span.innerText = arr[index];
-                        } while (count[index] > 0 && duplicate);
+                        } while (count[index] > 0 && !duplicate);
                     }, speed);
                     
 
@@ -43,17 +43,23 @@ function startRaffle(data) {
                         // count[index] += 1
                         clearInterval(interval);
 
+                        if (i == result_number - 1) {
+                            operateButton();
+                            resolve({arr, count });
+                        }
+
                     }, 4000 + i * j);
                 }, 100);
             })(i);
         }
 
-        const k = viewNow ? 500 : 0;
-        setTimeout(() => {
-            operateButton();
-            resolve({arr, count});
-            // console.log(count)
-        }, 4000 + result_number * j + k);
+        // const k = viewNow ? 500 : 200;
+        // console.log(4000 + (result_number - 1) * j + k)
+        // setTimeout(() => {
+        //     operateButton();
+        //     resolve({arr, count});
+        //     // console.log(count)
+        // }, 4000 + result_number * j + k);
     });
 }
 
@@ -96,7 +102,7 @@ function displayRaffleResult(data) {
                         do {
                             index = index < length - 1 ? index + 1 : 0;
                             span.innerText = arr[index];
-                        } while (count[index] > 0 && duplicate);
+                        } while (count[index] > 0 && !duplicate);
                     }, speed);
                     
 

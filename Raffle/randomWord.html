@@ -97,24 +97,24 @@
                         <!-- duplicate check -->
                         <div class="duplicate">
                             <label for="duplicate" class="container">
-                                <input type="checkbox" id="duplicate" checked />
+                                <input type="checkbox" id="duplicate" />
                                 <span class="checkmark"></span>
-                                <p>중복없이</span>
+                                <p>중복가능</span>
                             </label>
                         </div>
 
                         <div class="duplicate radio">
-                            <label for="at_once" class="container">
-                                <input type="radio" id="at_once" name="raffle_type" value="1">
-                                <span class="checkmark"></span>
-                                <p>한 번에</p>
-                            </label>
-                        </div>
-                        <div class="duplicate radio ml0">
                             <label for="one_time" class="container">
                                 <input type="radio" id="one_time" name="raffle_type" value="0" checked>
                                 <span class="checkmark"></span>
                                 <p>한 개씩</p>
+                            </label>
+                        </div>
+                        <div class="duplicate radio ml0">
+                            <label for="at_once" class="container">
+                                <input type="radio" id="at_once" name="raffle_type" value="1">
+                                <span class="checkmark"></span>
+                                <p>한 번에</p>
                             </label>
                         </div>
                     </div>
@@ -156,6 +156,12 @@
     </div>
 
 
+    <div class="dn" id="resultArr"></div>
+    <div class="dn" id="resultCount"></div>
+    <div class="dn" id="resultViewNow"></div>
+    <div class="dn" id="resultDuplicate"></div>
+
+
     <script type="text/javascript" src="./js/index.js"></script>
     <script type="text/javascript" src="./js/share.js"></script>
     <script type="text/javascript" src="./js/random.js"></script>
@@ -178,13 +184,18 @@
 
             if (!obj) return;
 
+
+            document.getElementById('resultViewNow').innerHTML = obj.viewNow;
+            document.getElementById('resultDuplicate').innerHTML = obj.duplicate;
+
+
+
             startRaffle(obj)
                 .then((result) => {
                     const { arr, count } = result;
-                    console.log(arr)
-                    console.log(count)
-                    const checkResult = arr.filter((_, index) => count[index] !== 0 );
-                    console.log(checkResult)
+
+                    document.getElementById('resultArr').innerHTML = arr;
+                    document.getElementById('resultCount').innerHTML = count;
                 })
                 .catch((error) => {
                     console.error(error);
