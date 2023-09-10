@@ -1,7 +1,7 @@
 function shareTwitter() {
     const sendText = "뽑기 결과입니다.";
     const sendUrl = getSendUrl();
-    window.open(`https://twitter.com/intent/tweet?text=${sendText}&url=${sendUrl}`);
+    window.open(`https://twitter.com/intent/tweet?text=${sendText}%0A%0D%0A&&url=${sendUrl}`);
 }
 
 function shareFacebook() {
@@ -81,5 +81,5 @@ function shareUrl() {
 }
 
 function getSendUrl() {
-    return encodeURIComponent("devpad.tistory.com/")
+    return encodeURIComponent("http://192.168.1.44:5500/Raffle/randomNumber.html")
 }

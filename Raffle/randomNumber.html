@@ -122,8 +122,8 @@
 
     <div class="other-raffle">
         <!-- <div class="el-center"> -->
-        <h2>단어 랜덤 뽑기</h2>
-        <a href="randomWord.html" rel="숫자 단어 뽑기" class="btn btn-word el-center">Click</a>
+        <h2>랜덤 단어 뽑기</h2>
+        <a href="randomWord.html" rel="랜덤 단어 뽑기" class="btn btn-word el-center">Click</a>
         <!-- </div> -->
     </div>
 
@@ -156,10 +156,8 @@
             startRaffle(obj)
                 .then((result) => {
                     const { arr, count } = result;
-                    console.log(arr)
-                    console.log(count)
+                    console.log(arr, count)
                     const checkResult = arr.filter((_, index) => count[index] !== 0 );
-                    console.log(checkResult)
                 })
                 .catch((error) => {
                     console.error(error);

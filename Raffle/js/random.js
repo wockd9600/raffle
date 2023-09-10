@@ -1,6 +1,16 @@
+function getShuffledArr(arr) {
+    const shuffledArr = [...arr];
+    // Fisher-Yates shuffle
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledArr[i], shuffledArr[j]] = [shuffledArr[j], shuffledArr[i]];
+    }
+
+    return shuffledArr;
+}
+
 function getObjForStartRaffle(arr) {
     const length = arr.length;
-    const shuffledArr = [...arr];
 
     const temp_result_number = parseInt(document.getElementById('result_number').value);
     const result_number = temp_result_number > 0 ? temp_result_number : 1;
@@ -18,12 +28,8 @@ function getObjForStartRaffle(arr) {
     const viewNow = parseInt(document.querySelector('input[name="raffle_type"]:checked').value);
     const duplicate = document.getElementById('duplicate').checked;
     const box = document.getElementsByClassName('result_box')[0];
-
-    // Fisher-Yates shuffle
-    for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffledArr[i], shuffledArr[j]] = [shuffledArr[j], shuffledArr[i]];
-    }
+    
+    const shuffledArr = getShuffledArr(arr);
 
     box.innerHTML = '';
 

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜덤 단어 뽑기</title>
+
+    <!-- Facebook (Common) Open Graph -->
+    <meta property="og:type" content="미리보기 종류" />
+    <meta property="og:url" content="페이지 URL" />
+    <meta property="og:title" content="미리보기 제목" />
+    <meta property="og:description" content="미리보기 설명" />
+    <meta property="og:image" content="미리보기 이미지 주소" />
+
+    <!-- css -->
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/random.css" type="text/css">
+    <link rel="stylesheet" href="css/share.css" type="text/css">
+</head>
+<style>
+    .result {
+        width: 690px;
+        min-height: 70px;
+        height: fit-content;
+        /* margin-bottom: 1rem; */
+        border: 1px solid #9884fc;
+        border-radius: 12px;
+    }
+
+    .result span {
+        display: block !important;
+        padding: .5rem 2rem;
+        width: fit-content;
+        height: 55px;
+        margin: auto;
+        text-align: center;
+        font-size: 2rem;
+        color: #fc8484;
+        box-sizing: border-box;
+    }
+
+    .span {
+        width: 50px;
+        text-align: center;
+    }
+
+    .btn-display-result { margin-left: 0;}
+</style>
+
+<body>
+    <div class="main el-center">
+        <!-- <h1>랜덤 단어 뽑기</h1> -->
+
+        <div class="raffle-body">
+            <div class="result df">
+                <div class="result_box w100">
+                </div>
+            </div>
+
+            <div class="df el-center" style="margin-top: 1.5rem;">
+                <button type="button" class="btn btn-word btn-lottery btn-display-result">뽑기 결과 보기</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="other-raffle">
+        <!-- <div class="el-center"> -->
+        <h2>랜덤 단어 뽑기</h2>
+        <a href="randomWord.html" rel="랜덤 단어 뽑기" class="btn btn-word el-center">Click</a>
+        <!-- </div> -->
+    </div>
+
+
+    <script type="text/javascript" src="./js/index.js"></script>
+    <script type="text/javascript" src="./js/random.js"></script>
+</body>
+
+
+<script type="module">
+    import { displayRaffleResult } from "./js/util.js";
+
+
+    const btnGetNumber = document.getElementsByClassName('btn-display-result')[0];
+
+    if (btnGetNumber) {
+        btnGetNumber.addEventListener('click', () => {
+
+            const arr = ['ㅋㅋㅋㅋ', 'ㅈㅈㅈㅈ', 'ㄷㄷㄷㄷ', 'ㄱㄱㄱㄱㄱ', '딸기맛향기', '포도맛향기', '귤맛향기', '무엇', '복숭아맛향기', 'dddd', 'qqqq', 'wwww', 'eeeee'].filter((element) => element !== '');;
+            const count = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+            const result = arr.filter((_, index) => count[index] !== 0 );
+
+            const viewNow = 0;
+            const duplicate = 1;
+
+            const box = document.getElementsByClassName('result_box')[0];
+            box.innerHTML = '';
+
+            const shuffledArr = getShuffledArr(arr);
+
+            const obj = {
+                arr: shuffledArr,
+                length: shuffledArr.length,
+                duplicate,
+                box,
+                viewNow,
+                result,
+            };
+
+            displayRaffleResult(obj)
+                .catch((error) => {
+                    console.error(error);
+                });
+        });
+    }
+</script>
+
+</html>
