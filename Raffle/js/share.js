@@ -85,9 +85,9 @@ function getSendUrl() {
     const currentUrl = window.location.href;
     const host = window.location.host;
     const type = window.location.pathname;
-    const pathName = type ? type + 'result' : 'randomnumberresult';
+    const pathName = type ? type + 'result' : '/randomnumberresult';
     const query = document.getElementById('resultUrl').innerHTML;
     console.log(currentUrl)
 
-    return encodeURIComponent(`http://${host}/${pathName}?query=${query}`);
+    return encodeURIComponent(`http://${host}${pathName}?query=${query}`);
 }
