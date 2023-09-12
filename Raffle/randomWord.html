@@ -194,6 +194,7 @@
 
             if (!obj) return;
 
+
             document.getElementById('resultUrl').innerHTML = '';
             addValueResultUrl(`${obj.viewNow}|`);
             addValueResultUrl(`${obj.duplicate ? 1 : 0}|`);
@@ -206,8 +207,15 @@
                     const resultString = arr.join("_");
                     const countString = count.join("_");
 
-                    addValueResultUrl(`${resultString}|`);
-                    addValueResultUrl(countString);
+                    if (resultString.length < 100) {
+                        addValueResultUrl(`${resultString}|`);
+                        addValueResultUrl(countString);
+                    } else {
+                        const resultStringFilter = arr.filter((_, index) => count[index] !== 0 ).join("_");
+                        const resultCountFilter = count.filter((value) => parseInt(value) !== 0 ).join("_");
+                        addValueResultUrl(`${resultStringFilter}|`);
+                        addValueResultUrl(resultCountFilter);
+                    }
                 })
                 .catch((error) => {
                     console.error(error);

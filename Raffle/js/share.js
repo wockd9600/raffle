@@ -68,7 +68,7 @@ function shareKakao() {
         ]
     });
 
-    
+
 }
 
 function shareUrl() {
@@ -88,11 +88,11 @@ function shareUrl() {
 }
 
 function getSendUrl() {
-    const result = encodeURIComponent(document.getElementById('resultUrl').innerHTML);
+    const result = document.getElementById('resultUrl').innerHTML;
     if (result == '') {
         alert('뽑기를 해주세요.');
         return '';
-}
+    }
 
     // const currentUrl = window.location.href;
     const host = window.location.host;

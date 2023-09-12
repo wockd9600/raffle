@@ -45,7 +45,7 @@ function startRaffle(data) {
 
                         if (i == result_number - 1) {
                             operateButton();
-                            resolve({arr, count });
+                            resolve({ arr, count });
                         }
 
                     }, 4000 + i * j);
@@ -68,7 +68,6 @@ function displayRaffleResult(data) {
     return new Promise((resolve, reject) => {
 
         const { arr, box, duplicate, length, viewNow, result } = data;
-        console.log(viewNow)
         // const checked = new Array(length).fill(false);
         const shuffleIndex = [...Array(length).keys()].map(x => x + 1);
         const count = new Array(length).fill(0);
