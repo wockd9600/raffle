@@ -159,6 +159,19 @@
 <script type="module">
     import { startRaffle } from "./js/util.js";
 
+    const inputWord = document.getElementById('word');
+
+    inputWord.addEventListener('input', function(event) {
+        const typedText = event.target.value;
+        const lastIndex = typedText.length - 1;
+
+        if (typedText[lastIndex] == '_' || typedText[lastIndex] == '|') {
+            event.target.value = event.target.value.slice(0, lastIndex);
+        }
+    });
+
+
+
     const btnGetWord = document.getElementById('btn-get-word');
 
     if (btnGetWord) {
