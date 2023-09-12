@@ -68,7 +68,7 @@ function displayRaffleResult(data) {
     return new Promise((resolve, reject) => {
 
         const { arr, box, duplicate, length, viewNow, result } = data;
-        
+        console.log(viewNow)
         // const checked = new Array(length).fill(false);
         const shuffleIndex = [...Array(length).keys()].map(x => x + 1);
         const count = new Array(length).fill(0);
@@ -81,7 +81,7 @@ function displayRaffleResult(data) {
         const shuffledIndexesOfResult = result.map(value => shuffleIndex.indexOf(value));
 
 
-        const j = viewNow ? 30 : 700;
+        const j = viewNow ? 30 : 1500;
 
         for (let i = 0; i < result.length; i++) {
             const span = document.createElement('span');

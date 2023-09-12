@@ -87,16 +87,25 @@
     if (btnGetNumber) {
         btnGetNumber.addEventListener('click', () => {
 
-            const arr = ['ㅋㅋㅋㅋ', 'ㅈㅈㅈㅈ', 'ㄷㄷㄷㄷ', 'ㄱㄱㄱㄱㄱ', '딸기맛향기', '포도맛향기', '귤맛향기', '무엇', '복숭아맛향기', 'dddd', 'qqqq', 'wwww', 'eeeee'].filter((element) => element !== '');;
-            const count = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+            const currentUrl = decodeURI(window.location.href);
 
-            const result = arr.filter((_, index) => count[index] !== 0 );
+            //  http://192.168.1.44:5500/Raffle/randomNumber.html?query=0%7C0%7C%EC%9E%98%EC%A7%80%EB%82%B4_%EC%9E%98%EA%B0%80_%EC%95%88%EB%85%95_%EA%B5%AC%EB%9E%98%EA%B5%AC%EB%9E%98_%EC%98%A4%EB%9E%9C%EB%A7%8C%EC%9D%B4%EC%95%BC%7C1_0_0_1_1
 
-            const viewNow = 0;
-            const duplicate = 1;
+            const queryString = currentUrl.split('query=')[1];
+            const objArr = queryString.split('|');
+            
+            const viewNow = parseInt(objArr[0]);
+            const duplicate = parseInt(objArr[1]);
+
+            const arr = objArr[2].split('_');
+            const count = objArr[3].split('_');
+
+            const result = arr.filter((_, index) => parseInt(count[index]) !== 0 );
+
 
             const box = document.getElementsByClassName('result_box')[0];
             box.innerHTML = '';
+
 
             const shuffledArr = getShuffledArr(arr);
 
@@ -108,6 +117,13 @@
                 viewNow,
                 result,
             };
+
+            setTimeout(() => {
+                const targetElement = document.getElementsByClassName("result_box")[0];
+
+                // 대상 DOM 요소로 스크롤 이동
+                targetElement.scrollIntoView({ behavior: "smooth" });
+            }, 100)
 
             displayRaffleResult(obj)
                 .catch((error) => {

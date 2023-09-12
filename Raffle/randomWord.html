@@ -174,8 +174,8 @@
             if (!obj) return;
 
             document.getElementById('resultUrl').innerHTML = '';
-            addValueResultUrl(`${obj.viewNow}-`);
-            addValueResultUrl(`${obj.duplicate ? 1 : 0}-`);
+            addValueResultUrl(`${obj.viewNow}|`);
+            addValueResultUrl(`${obj.duplicate ? 1 : 0}|`);
 
 
             startRaffle(obj)
@@ -185,7 +185,7 @@
                     const resultString = arr.join("_");
                     const countString = count.join("_");
 
-                    addValueResultUrl(`${resultString}-`);
+                    addValueResultUrl(`${resultString}|`);
                     addValueResultUrl(countString);
                 })
                 .catch((error) => {

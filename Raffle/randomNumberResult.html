@@ -95,11 +95,11 @@
     if (btnGetNumber) {
         btnGetNumber.addEventListener('click', () => {
 
-            const currentUrl = window.location.href;
+            const currentUrl = decodeURI(window.location.href);
 
-            // const currentUrl = decodeURI('http://192.168.1.44:5500/Raffle/randomNumber.html?query=50-1-1-0-12_41_10_8');
+            // const currentUrl = decodeURI('http://192.168.1.44:5500/Raffle/randomNumberResult.html?query=10|-10|0|0|12_41_10_8');
             const queryString = currentUrl.split('query=')[1];
-            const objArr = queryString.split('-');
+            const objArr = queryString.split('|'); //%7C
 
             
             const max = parseInt(objArr[0]);

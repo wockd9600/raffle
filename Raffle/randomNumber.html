@@ -159,17 +159,17 @@
 
             
             document.getElementById('resultUrl').innerHTML = '';
-            addValueResultUrl(`${max}-`);
-            addValueResultUrl(`${min}-`);
-            addValueResultUrl(`${obj.viewNow}-`);
-            addValueResultUrl(`${obj.duplicate ? 1 : 0}-`);
+            addValueResultUrl(`${max}|`);
+            addValueResultUrl(`${min}|`);
+            addValueResultUrl(`${obj.viewNow}|`);
+            addValueResultUrl(`${obj.duplicate ? 1 : 0}|`);
 
 
 
             startRaffle(obj)
                 .then((result) => {
                     const { arr, count } = result;
-                    const resultString = arr.filter((_, index) => count[index] !== 0 ).join("_");
+                    const resultString = arr.filter((_, index) => count[index] !== 0 ).join("|");
                     addValueResultUrl(resultString);
                     // document.getElementById('resultCount').innerHTML = count;
                     // const checkResult = arr.filter((_, index) => count[index] !== 0 );
