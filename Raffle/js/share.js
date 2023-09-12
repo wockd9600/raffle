@@ -84,7 +84,8 @@ function shareUrl() {
 function getSendUrl() {
     const currentUrl = window.location.href;
     const host = window.location.host;
-    const pathName = window.location.pathname + 'result';
+    const type = window.location.pathname;
+    const pathName = type ? type + 'result' : 'randomnumberresult';
     const query = document.getElementById('resultUrl').innerHTML;
     console.log(currentUrl)
 
