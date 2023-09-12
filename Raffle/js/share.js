@@ -82,6 +82,11 @@ function shareUrl() {
 }
 
 function getSendUrl() {
-    const router = 'randomNumber';
-    return encodeURIComponent(`http://192.168.1.44:5500/Raffle/${router}.html?query=${document.getElementById('resultUrl').innerHTML}`);
+    const currentUrl = window.location.href;
+    const host = window.location.host;
+    const pathName = window.location.pathname + 'result';
+    const query = document.getElementById('resultUrl').innerHTML;
+    console.log(currentUrl)
+
+    return encodeURIComponent(`http://${host}/${pathName}?query=${query}`);
 }
