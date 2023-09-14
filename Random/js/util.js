@@ -1,5 +1,13 @@
+let isRaffling = false;
+
+const getIsRaffling = () => isRaffling;
+const setIsRafflingTrue = () => isRaffling = true;
+const setIsRafflingFalse = () => isRaffling = false;
+
 function startRaffle(data) {
     return new Promise((resolve, reject) => {
+
+        setIsRafflingTrue();
 
         const { arr, box, result_number, duplicate, length, viewNow } = data;
         // const checked = new Array(length).fill(false);
@@ -30,6 +38,12 @@ function startRaffle(data) {
                     let index = shuffleIndex[i];
                     
                     const interval = setInterval(() => {
+                        if (!isRaffling) {
+                            clearInterval(interval);
+                            if (i == result_number - 1) reject('cancel');
+                            return 0
+                        }
+
                         do {
                             index = index < length - 1 ? index + 1 : 0;
                             span.innerText = arr[index];
@@ -39,6 +53,8 @@ function startRaffle(data) {
 
 
                     setTimeout(() => {
+                        if (!isRaffling) return 0;
+
                         count[index] += 1;
                         // count[index] += 1
                         clearInterval(interval);
@@ -52,20 +68,14 @@ function startRaffle(data) {
                 }, 100);
             })(i);
         }
-
-        // const k = viewNow ? 500 : 200;
-        // console.log(4000 + (result_number - 1) * j + k)
-        // setTimeout(() => {
-        //     operateButton();
-        //     resolve({arr, count});
-        //     // console.log(count)
-        // }, 4000 + result_number * j + k);
     });
 }
 
 
 function displayRaffleResult(data) {
     return new Promise((resolve, reject) => {
+
+        downButton();
 
         const { arr, box, duplicate, length, viewNow, result } = data;
         // const checked = new Array(length).fill(false);
@@ -129,4 +139,6 @@ function displayRaffleResult(data) {
 export {
     startRaffle,
     displayRaffleResult,
+    setIsRafflingFalse,
+    getIsRaffling,
 }

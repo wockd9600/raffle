@@ -4,22 +4,23 @@ const downButton = () => {
     const all = document.querySelectorAll('*');
     for (let idx in all) {
         const el = all[idx];
-
         if (el.addEventListener) {
             el.addEventListener('click', stopFunc, true);
-        } else { }
+        }
     }
+
+    const cancelButton = document.getElementsByClassName('cancel')[0];
+    console.log(cancelButton)
+    if (cancelButton.removeEventListener) cancelButton.removeEventListener('click', stopFunc, true);
 }
+
 const operateButton = () => {
     const all = document.querySelectorAll('*');
     for (let idx in all) {
         const el = all[idx];
-        if (el.removeEventListener) {
-            el.removeEventListener('click', stopFunc, true);
-        } else { }
+        if (el.removeEventListener) el.removeEventListener('click', stopFunc, true);
     }
 }
-
 
 
 // const showMenu = (type) => {

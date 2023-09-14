@@ -1,7 +1,6 @@
 function shareTwitter() {
     const sendText = "뽑기 결과입니다.";
     const sendUrl = getSendUrl();
-    if (sendUrl == '') return;
 
     console.log(sendUrl)
     window.open(`https://twitter.com/intent/tweet?text=${sendText}%0A%0D%0A&&url=${sendUrl}`);
@@ -9,7 +8,6 @@ function shareTwitter() {
 
 function shareFacebook() {
     const sendUrl = getSendUrl();
-    if (sendUrl == '') return;
 
     window.open(`http://www.facebook.com/sharer/sharer.php?u=${sendUrl}`);
 }
@@ -17,7 +15,6 @@ function shareFacebook() {
 function shareBand() {
     const sendTitle = '뽑기 결과입니다.';
     const sendUrl = getSendUrl();
-    if (sendUrl == '') return;
 
     window.open(`http://www.band.us/plugin/share?body=${sendTitle}&route=${sendUrl}`);
 }
@@ -26,7 +23,6 @@ function shareBand() {
 function shareKakao() {
     const sendTitle = '뽑기 결과입니다.';
     const sendUrl = getSendUrl();
-    if (sendUrl == '') return;
 
     if (!Kakao.isInitialized()) {
         Kakao.init('3838744547ef55fd808cecb936193a5b');
@@ -73,7 +69,6 @@ function shareKakao() {
 
 function shareUrl() {
     const sendUrl = getSendUrl();
-    if (sendUrl == '') return;
 
     const t = document.createElement("textarea");
     document.body.appendChild(t);
@@ -89,10 +84,7 @@ function shareUrl() {
 
 function getSendUrl() {
     const result = document.getElementById('resultUrl').innerHTML;
-    if (result == '') {
-        alert('뽑기를 해주세요.');
-        return '';
-    }
+    if (result == '') return `http://${window.location.host}${window.location.pathname}`;
 
     // const currentUrl = window.location.href;
     const host = window.location.host;

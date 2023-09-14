@@ -1,5 +1,28 @@
 function addValueResultUrl(value) {
-    document.getElementById('resultUrl').innerHTML += encodeURIComponent(value);
+    document.getElementById('tempResultUrl').innerHTML += encodeURIComponent(value);
+}
+
+function addColorOfBtnLotter() {
+    const raffle_btn = document.getElementsByClassName('btn-lottery')[0];
+    raffle_btn.classList.remove('btn-cancel');
+    raffle_btn.innerHTML = '뽑기';
+}
+
+function cancelRaffle() {
+
+    document.getElementById('tempResultUrl').innerHTML = '';
+    const box = document.getElementsByClassName('result_box')[0];
+
+    box.innerHTML = '';
+
+    const span = document.createElement('span');
+    span.classList.add('span');
+    span.classList.add('cancel-text');
+    span.innerText = '취소했습니다.';
+
+    box.appendChild(span);
+
+    addColorOfBtnLotter();
 }
 
 function getShuffledArr(arr) {
@@ -27,12 +50,10 @@ function getObjForStartRaffle(arr) {
         return false;
     }
 
-    downButton();
-
     const viewNow = parseInt(document.querySelector('input[name="raffle_type"]:checked').value);
     const duplicate = document.getElementById('duplicate').checked;
     const box = document.getElementsByClassName('result_box')[0];
-    
+
     const shuffledArr = getShuffledArr(arr);
 
     box.innerHTML = '';

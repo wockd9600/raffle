@@ -48,6 +48,8 @@
         flex-wrap: wrap;
         margin-left: 1.5rem;
     }
+
+    .cancel-text { width: fit-content !important;}
 </style>
 
 <body>
@@ -130,6 +132,7 @@
     </div>
 
     <div class="dn" id="resultUrl"></div>
+    <div class="dn" id="tempResultUrl"></div>
 
     <script type="text/javascript" src="./js/index.js"></script>
     <script type="text/javascript" src="./js/share.js"></script>
@@ -137,13 +140,17 @@
 </body>
 
 <script type="module">
-    import { startRaffle } from "./js/util.js";
+    import { startRaffle, getIsRaffling, setIsRafflingFalse } from "./js/util.js";
 
 
     const btnGetNumber = document.getElementById('btn-get-number');
 
     if (btnGetNumber) {
         btnGetNumber.addEventListener('click', () => {
+            if (getIsRaffling()) {
+                setIsRafflingFalse();
+                return 0;
+            }
 
             let max = parseInt(document.getElementById('end-number').value);
             let min = parseInt(document.getElementById('start-number').value);
@@ -157,7 +164,7 @@
 
             if (!obj) return;
 
-            
+        
             document.getElementById('resultUrl').innerHTML = '';
             addValueResultUrl(`${max}|`);
             addValueResultUrl(`${min}|`);
@@ -165,17 +172,28 @@
             addValueResultUrl(`${obj.duplicate ? 1 : 0}|`);
 
 
+            const raffle_btn = document.getElementsByClassName('btn-lottery')[0];
+            raffle_btn.classList.add('btn-cancel');
+            raffle_btn.innerHTML = '취소';
+
+
 
             startRaffle(obj)
                 .then((result) => {
+                    setIsRafflingFalse();
+                    
                     const { arr, count } = result;
                     const resultString = arr.filter((_, index) => count[index] !== 0 ).join("|");
                     addValueResultUrl(resultString);
                     // document.getElementById('resultCount').innerHTML = count;
                     // const checkResult = arr.filter((_, index) => count[index] !== 0 );
+
+                    addColorOfBtnLotter();
+                    document.getElementById('resultUrl').innerHTML = document.getElementById('tempResultUrl').innerHTML;
                 })
                 .catch((error) => {
                     console.error(error);
+                    cancelRaffle();
                 });
         });
     }
