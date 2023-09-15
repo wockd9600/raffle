@@ -8,10 +8,6 @@ const downButton = () => {
             el.addEventListener('click', stopFunc, true);
         }
     }
-
-    const cancelButton = document.getElementsByClassName('cancel')[0];
-    console.log(cancelButton)
-    if (cancelButton.removeEventListener) cancelButton.removeEventListener('click', stopFunc, true);
 }
 
 const operateButton = () => {
