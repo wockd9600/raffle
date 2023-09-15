@@ -53,10 +53,6 @@
     .cancel-text {
         width: fit-content !important;
     }
-
-    @media (max-width: 768px) {
-        /* .df-resi { flex-direction: column; } */
-    }
 </style>
 
 <body>
@@ -72,10 +68,10 @@
                             <h2>숫자 범위 : </h2>
                             <div class="df flexible-width">
                                 <div class="df w100">
-                                    <input style="width: 45%;" type="number" class="flexible-width" id="start-number" value="1"
+                                    <input onclick="this.select()" style="width: 45%;" type="number" class="flexible-width" id="start-number" value="1"
                                         placeholder="시작 숫자">
                                     <span>~</span>
-                                    <input style="width: 45%;" type="number" class="flexible-width" id="end-number" value="5"
+                                    <input onclick="this.select()" style="width: 45%;" type="number" class="flexible-width" id="end-number" value="5"
                                         placeholder="마지막 숫자">
                                 </div>
                             </div>
@@ -88,7 +84,7 @@
                             </div>
                             
                             <div class="flexible-width">
-                                <input type="number" value="1" class="w100" id="result_number" placeholder="뽑을 숫자 개수">
+                                <input onclick="this.select()" type="number" value="1" class="w100" id="result_number" placeholder="뽑을 숫자 개수">
                             </div>
                             <div class="duplicates df">
                                 <div class="duplicate ml0-rwd">
@@ -117,17 +113,17 @@
                         </div>
                     </div>
                     <!-- get random number button -->
-                    <button type="button" class="btn btn-number btn-lottery" id="btn-get-number">뽑기</button>
+                    <button type="button" alt="뽑기 버튼" class="btn btn-number btn-lottery" id="btn-get-number">뽑기</button>
                 </div>
             </div>
 
             <!-- icons -->
             <div class="icons">
-                <span id="btnTwitter" class="link-icon twitter" onclick="shareTwitter();"></span>
-                <span id="btnFacebook" class="link-icon facebook" onclick="shareFacebook();"></span>
-                <span id="btnKakao" class="link-icon kakao" onclick="shareKakao();"></span>
-                <span id="btnBand" class="link-icon band" onclick="shareBand();"></span>
-                <span id="btnUrl" class="link-icon url" onclick="shareUrl();"></span>
+                <span id="btnTwitter" class="link-icon twitter" alt="트위터에 공유하기" onclick="shareTwitter();"></span>
+                <span id="btnFacebook" class="link-icon facebook" alt="페이스북에 공유하기" onclick="shareFacebook();"></span>
+                <span id="btnKakao" class="link-icon kakao" alt="카카오톡에 공유하기" onclick="shareKakao();"></span>
+                <span id="btnBand" class="link-icon band" alt="밴드에 공유하기" onclick="shareBand();"></span>
+                <span id="btnUrl" class="link-icon url" alt="URL 복사하기" onclick="shareUrl();"></span>
             </div>
 
             <!-- result -->

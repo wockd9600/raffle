@@ -42,22 +42,27 @@
 /* input */
 input { max-width: 160px; padding: 10px 0 10px 12px; background-color: #f0f0f0; border: 0 solid white; border-radius: 8px; font-size: 18px; color: #999; }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     h2 { font-size: 1.3rem; flex-grow: 0;}
     input { max-width: none; padding-left: 0; text-align: center; box-sizing: border-box;}
+    textarea { width: 100% !important; }
 
     .px-20-rwd { padding: 0 20px;}
     .ml0-rwd { margin-left: 0;}
     .flexible-width { flex-grow: 1; }
 
+    .main { margin-top: 7rem; }
+    .range { margin-bottom: 1.1rem; }
+    /* .count { margin-bottom: 1.8rem; } */
     .range span { font-size: 1.5rem;}
 
-    .duplicates { margin-left: 0; margin-top: .75rem;}
+    .duplicates { margin-left: 0; margin-top: .75rem; }
 
-    .btn-lottery { margin-left: 0; margin-top: 30px; padding: 10px;}
+    .btn-lottery { margin-left: 0; margin-top: 1rem; padding: 10px;}
+    .btn-number { margin-top: 1.5rem; }
 }
 
-@media (max-width: 330px) {
+@media (max-width: 350px) {
     .duplicate { margin-left: 0;}
     .duplicate p { margin-left: 24px; font-size: .9rem;}
     .btn-lottery { margin-top: 20px; }
