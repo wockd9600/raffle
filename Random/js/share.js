@@ -3,7 +3,7 @@ function shareTwitter() {
     const sendUrl = getSendUrl();
 
     console.log(sendUrl)
-    window.open(`https://twitter.com/intent/tweet?text=${sendText}%0A%0D%0A&&url=${sendUrl}`);
+    window.open(`https://twitter.com/intent/tweet?text=${sendText}%0D%0A&&url=${sendUrl}`);
 }
 
 function shareFacebook() {
@@ -89,7 +89,7 @@ function getSendUrl() {
     // const currentUrl = window.location.href;
     const host = window.location.host;
     const type = window.location.pathname;
-    const pathName = type ? type + 'result' : '/randomnumberresult';
+    const pathName = type == '/' ? '/randomnumberresult' : type + 'result';
 
     return `https://${host}${pathName}?query=${result}`;
 }
