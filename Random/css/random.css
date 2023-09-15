@@ -1,7 +1,7 @@
-.main { position: relative; margin-top: 10rem;}
+.main { position: relative; margin-top: 10rem; width: 100%; max-width: 739px; }
 .main h1 { margin-bottom: 1rem; }
 
-.raffle-body h2 { margin-right: .8rem; max-height: 50vh; }
+.raffle-body h2 { margin-right: .8rem; }
 
 .other-raffle {
     position: absolute;
@@ -15,13 +15,15 @@
 .range span { display: block; margin: 0 10px; font-size: 2em; font-weight: bold; }
 
 
+
 /* button */
 .btn-lottery { margin-left: 1.78rem; padding: 33px 50px; border-radius: 16px; font-size: 24px; }
 .btn-cancel { background-color: #ccc !important; border-color: #ccc !important; color: white !important; }
 
 /* checkbox */
-.duplicate { display: flex; margin: .6rem 0 0 1rem;; }
-.container { display: block; position: relative; height: fit-content; cursor: pointer; width: fit-content; margin-right: 10px; }
+.duplicate { display: flex; margin-left: 1rem; }
+.duplicates { margin-top: .6rem; }
+.container { display: block; position: relative; height: fit-content; cursor: pointer; width: fit-content; margin-right: 10px;}
 .container input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0 }
 .container:hover input ~ .checkmark { border-color: rgb(100, 100, 100) }
 .container input:checked ~ .checkmark { background-color: #02bb8c; border: none }
@@ -38,4 +40,25 @@
 .radio .duplicate p { margin-left: 28px; }
 
 /* input */
-input { width: 160px; padding: 10px 0 10px 12px; background-color: #f0f0f0; border: 0 solid white; border-radius: 8px; font-size: 18px; color: #999 }
+input { max-width: 160px; padding: 10px 0 10px 12px; background-color: #f0f0f0; border: 0 solid white; border-radius: 8px; font-size: 18px; color: #999; }
+
+@media (max-width: 768px) {
+    h2 { font-size: 1.3rem; flex-grow: 0;}
+    input { max-width: none; padding-left: 0; text-align: center; box-sizing: border-box;}
+
+    .px-20-rwd { padding: 0 20px;}
+    .ml0-rwd { margin-left: 0;}
+    .flexible-width { flex-grow: 1; }
+
+    .range span { font-size: 1.5rem;}
+
+    .duplicates { margin-left: 0; margin-top: .75rem;}
+
+    .btn-lottery { margin-left: 0; margin-top: 30px; padding: 10px;}
+}
+
+@media (max-width: 330px) {
+    .duplicate { margin-left: 0;}
+    .duplicate p { margin-left: 24px; font-size: .9rem;}
+    .btn-lottery { margin-top: 20px; }
+}

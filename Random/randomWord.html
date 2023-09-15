@@ -85,66 +85,70 @@
 
 <body>
     <div class="main el-center">
-        <h1>랜덤 단어 뽑기</h1>
-        <div class="raffle-body">
-            <div>
+        <div class="px-20-rwd el-center">
+            <h1>랜덤 단어 뽑기</h1>
+            <div class="raffle-body">
                 <div>
-                    <!-- number count -->
-                    <div class="count df">
-                        <h2>뽑을 단어 개수 : </h2>
-                        <input type="number" value="1" id="result_number" placeholder="뽑을 숫자 개수"
-                            onclick="this.select()">
-
-                        <!-- duplicate check -->
-                        <div class="duplicate">
-                            <label for="duplicate" class="container">
-                                <input type="checkbox" id="duplicate" />
-                                <span class="checkmark"></span>
-                                <p>중복가능</span>
-                            </label>
-                        </div>
-
-                        <div class="duplicate radio">
-                            <label for="one_time" class="container">
-                                <input type="radio" id="one_time" name="raffle_type" value="0" checked>
-                                <span class="checkmark"></span>
-                                <p>한 개씩</p>
-                            </label>
-                        </div>
-                        <div class="duplicate radio ml0">
-                            <label for="at_once" class="container">
-                                <input type="radio" id="at_once" name="raffle_type" value="1">
-                                <span class="checkmark"></span>
-                                <p>한 번에</p>
-                            </label>
+                    <div>
+                        <!-- number count -->
+                        <div class="count df">
+                            <h2>뽑을 단어 개수 : </h2>
+                            <input type="number" value="1" id="result_number" placeholder="뽑을 숫자 개수"
+                                onclick="this.select()">
+    
+                            <!-- duplicate check -->
+                            <div class="duplicates df">
+                                <div class="duplicate">
+                                    <label for="duplicate" class="container">
+                                        <input type="checkbox" id="duplicate" />
+                                        <span class="checkmark"></span>
+                                        <p>중복가능</span>
+                                    </label>
+                                </div>
+        
+                                <div class="duplicate radio">
+                                    <label for="one_time" class="container">
+                                        <input type="radio" id="one_time" name="raffle_type" value="0" checked>
+                                        <span class="checkmark"></span>
+                                        <p>한 개씩</p>
+                                    </label>
+                                </div>
+                                <div class="duplicate radio ml0">
+                                    <label for="at_once" class="container">
+                                        <input type="radio" id="at_once" name="raffle_type" value="1">
+                                        <span class="checkmark"></span>
+                                        <p>한 번에</p>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="df" style="margin-top: 1rem; ">
+                        <textarea name="word" id="word" placeholder="단어를 엔터로 구분합니다."></textarea>
+                        <!-- get random number button -->
+                        <button type="button" class="btn btn-word btn-lottery" style="height: 150px"
+                            id="btn-get-word">뽑기</button>
+                    </div>
                 </div>
-                <div class="df" style="margin-top: 1rem; ">
-                    <textarea name="word" id="word" placeholder="단어를 엔터로 구분합니다."></textarea>
-                    <!-- get random number button -->
-                    <button type="button" class="btn btn-word btn-lottery" style="height: 150px"
-                        id="btn-get-word">뽑기</button>
+    
+                <!-- icons -->
+                <div class="icons">
+                    <span id="btnTwitter" class="link-icon twitter" onclick="shareTwitter();"></span>
+                    <span id="btnFacebook" class="link-icon facebook" onclick="shareFacebook();"></span>
+                    <span id="btnKakao" class="link-icon kakao" onclick="shareKakao();"></span>
+                    <span id="btnBand" class="link-icon band" onclick="shareBand();"></span>
+                    <span id="btnUrl" class="link-icon url" onclick="shareUrl();"></span>
                 </div>
-            </div>
-
-            <!-- icons -->
-            <div class="icons">
-                <span id="btnTwitter" class="link-icon twitter" onclick="shareTwitter();"></span>
-                <span id="btnFacebook" class="link-icon facebook" onclick="shareFacebook();"></span>
-                <span id="btnKakao" class="link-icon kakao" onclick="shareKakao();"></span>
-                <span id="btnBand" class="link-icon band" onclick="shareBand();"></span>
-                <span id="btnUrl" class="link-icon url" onclick="shareUrl();"></span>
-            </div>
-
-            <!-- result -->
-            <div style="padding-bottom: 1rem;">
-                <div class="result df">
-                    <div class="result_box w100">
-                        <!-- <span class="span">fsafd</span>
-                        <span class="span">asdffd</span>
-                        <span class="span">qwerwer</span>
-                        <span class="span">gdasgds</span> -->
+    
+                <!-- result -->
+                <div style="padding-bottom: 1rem;">
+                    <div class="result df">
+                        <div class="result_box w100">
+                            <!-- <span class="span">fsafd</span>
+                            <span class="span">asdffd</span>
+                            <span class="span">qwerwer</span>
+                            <span class="span">gdasgds</span> -->
+                        </div>
                     </div>
                 </div>
             </div>

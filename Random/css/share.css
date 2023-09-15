@@ -15,3 +15,11 @@
     -moz-border-radius: 50px;
     border-radius: 50px;
 }
+
+
+@media (max-width: 315px) {
+    
+    .link-icon { width: 30px; height: 30px;}
+    .link-icon { background-size: 30px 30px !important;}
+    .link-icon.url { background-size: 28px 29px !important; margin-right: 0; }
+}

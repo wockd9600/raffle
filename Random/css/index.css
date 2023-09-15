@@ -9,6 +9,7 @@ h1, h2, p, span { margin: 0; padding: 0; }
 
 
 .df { display: flex; }
+.df-rwd { display: flex; }
 .dn { display: none; }
 .wf { width: fit-content; }
 .w100 { width: 100%; }
@@ -34,3 +35,9 @@ h1, h2, p, span { margin: 0; padding: 0; }
 .btn.btn-number { color: #02bb8c; background: none; border-color: #02bb8c;}
 .btn.btn-word:hover { background-color: #02bb8c; border-color: #02bb8c; }
 .btn.btn-number:hover { color: white; background: #02bb8c; }
+
+
+
+@media (max-width: 768px) {
+    .df-rwd { flex-direction: column; }
+}

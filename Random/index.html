@@ -23,10 +23,11 @@
 </head>
 <style>
     .result {
-        width: 737px;
         min-height: 70px;
         height: fit-content;
+        margin: auto;
         margin-top: 1rem;
+        margin-bottom: 1rem;
         border: 1px solid #02bb8c;
         border-radius: 12px;
     }
@@ -46,62 +47,78 @@
         position: relative;
         display: flex;
         flex-wrap: wrap;
-        margin-left: 1.5rem;
+        /* margin-left: 1.5rem; */
     }
 
-    .cancel-text { width: fit-content !important;}
+    .cancel-text {
+        width: fit-content !important;
+    }
+
+    @media (max-width: 768px) {
+        /* .df-resi { flex-direction: column; } */
+    }
 </style>
 
 <body>
     <div class="main el-center">
-        <h1>랜덤 숫자 뽑기</h1>
+        <div class="px-20-rwd">
+            <h1>랜덤 숫자 뽑기</h1>
 
-        <div class="raffle-body">
-            <div class="df">
-                <div>
-                    <!-- number range -->
-                    <div class="range df">
-                        <h2>숫자 범위 : </h2>
-                        <div class="df">
-                            <input type="number" id="start-number" value="1" placeholder="시작 숫자">
-                            <span>~</span>
-                            <input type="number" id="end-number" value="5" placeholder="마지막 숫자">
+            <div class="raffle-body">
+                <div class="df-rwd">
+                    <div>
+                        <!-- number range -->
+                        <div class="range df-rwd">
+                            <h2>숫자 범위 : </h2>
+                            <div class="df flexible-width">
+                                <div class="df w100">
+                                    <input style="width: 45%;" type="number" class="flexible-width" id="start-number" value="1"
+                                        placeholder="시작 숫자">
+                                    <span>~</span>
+                                    <input style="width: 45%;" type="number" class="flexible-width" id="end-number" value="5"
+                                        placeholder="마지막 숫자">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- number count -->
+                        <div class="count df-rwd">
+                            <div class="df">
+                                <h2>추첨수 : </h2>
+                            </div>
+                            
+                            <div class="flexible-width">
+                                <input type="number" value="1" class="w100" id="result_number" placeholder="뽑을 숫자 개수">
+                            </div>
+                            <div class="duplicates df">
+                                <div class="duplicate ml0-rwd">
+                                    <label for="duplicate" class="container">
+                                        <input type="checkbox" id="duplicate" />
+                                        <span class="checkmark"></span>
+                                        <p>중복가능</p>
+                                    </label>
+                                </div>
+                                <div class="duplicate radio">
+                                    <label for="one_time" class="container">
+                                        <input type="radio" id="one_time" name="raffle_type" value="0" checked>
+                                        <span class="checkmark"></span>
+                                        <p>한 개씩</p>
+                                    </label>
+                                </div>
+                                <div class="duplicate radio ml0">
+                                    <label for="at_once" class="container">
+                                        <input type="radio" id="at_once" name="raffle_type" value="1">
+                                        <span class="checkmark"></span>
+                                        <p>한 번에</p>
+                                    </label>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
-
-                    <!-- number count -->
-                    <div class="count df">
-                        <h2>추첨수 : </h2>
-                        <input type="number" value="1" id="result_number" placeholder="뽑을 숫자 개수">
-
-                        <!-- duplicate check -->
-                        <div class="duplicate">
-                            <label for="duplicate" class="container">
-                                <input type="checkbox" id="duplicate" />
-                                <span class="checkmark"></span>
-                                <p>중복가능</p>
-                            </label>
-                        </div>
-
-                        <div class="duplicate radio">
-                            <label for="one_time" class="container">
-                                <input type="radio" id="one_time" name="raffle_type" value="0" checked>
-                                <span class="checkmark"></span>
-                                <p>한 개씩</p>
-                            </label>
-                        </div>
-                        <div class="duplicate radio  ml0">
-                            <label for="at_once" class="container">
-                                <input type="radio" id="at_once" name="raffle_type" value="1">
-                                <span class="checkmark"></span>
-                                <p>한 번에</p>
-                            </label>
-                        </div>
-                        
-                    </div>
+                    <!-- get random number button -->
+                    <button type="button" class="btn btn-number btn-lottery" id="btn-get-number">뽑기</button>
                 </div>
-                <!-- get random number button -->
-                <button type="button" class="btn btn-number btn-lottery" id="btn-get-number">뽑기</button>
             </div>
 
             <!-- icons -->
@@ -122,6 +139,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
     <div class="other-raffle">
@@ -141,6 +159,11 @@
 
 <script type="module">
     import { startRaffle, getIsRaffling, setIsRafflingFalse } from "./js/util.js";
+
+    // const main_width = window.innerWidth - 20 ;
+
+    // document.documentElement.style.setProperty("--main-width", `${main_width}px`);
+    //     document.documentElement.style.setProperty("--my-stone-height", `${my_card_height}px`);
 
 
     const btnGetNumber = document.getElementById('btn-get-number');
@@ -164,7 +187,7 @@
 
             if (!obj) return;
 
-        
+
             document.getElementById('resultUrl').innerHTML = '';
             addValueResultUrl(`${max}|`);
             addValueResultUrl(`${min}|`);
@@ -181,9 +204,9 @@
             startRaffle(obj)
                 .then((result) => {
                     setIsRafflingFalse();
-                    
+
                     const { arr, count } = result;
-                    const resultString = arr.filter((_, index) => count[index] !== 0 ).join("|");
+                    const resultString = arr.filter((_, index) => count[index] !== 0).join("|");
                     addValueResultUrl(resultString);
                     // document.getElementById('resultCount').innerHTML = count;
                     // const checkResult = arr.filter((_, index) => count[index] !== 0 );
