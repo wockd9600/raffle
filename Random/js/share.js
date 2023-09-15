@@ -1,5 +1,5 @@
 function shareTwitter() {
-    const sendText = "뽑기 결과입니다.";
+    const sendText = "";
     const sendUrl = getSendUrl();
 
     console.log(sendUrl)
@@ -13,7 +13,7 @@ function shareFacebook() {
 }
 
 function shareBand() {
-    const sendTitle = '뽑기 결과입니다.';
+    const sendTitle = '';
     const sendUrl = getSendUrl();
 
     window.open(`http://www.band.us/plugin/share?body=${sendTitle}&route=${sendUrl}`);
@@ -21,7 +21,7 @@ function shareBand() {
 
 // 뽑기가 끝나면 생성
 function shareKakao() {
-    const sendTitle = '뽑기 결과입니다.';
+    const sendTitle = '';
     const sendUrl = getSendUrl();
 
     if (!Kakao.isInitialized()) {
@@ -84,12 +84,12 @@ function shareUrl() {
 
 function getSendUrl() {
     const result = document.getElementById('resultUrl').innerHTML;
-    if (result == '') return `http://${window.location.host}${window.location.pathname}`;
+    if (result == '') return `https://${window.location.host}${window.location.pathname}`;
 
     // const currentUrl = window.location.href;
     const host = window.location.host;
     const type = window.location.pathname;
     const pathName = type ? type + 'result' : '/randomnumberresult';
 
-    return `http://${host}${pathName}?query=${result}`;
+    return `https://${host}${pathName}?query=${result}`;
 }
