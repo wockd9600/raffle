@@ -2,7 +2,7 @@ function shareTwitter() {
     const sendText = "";
     const sendUrl = getSendUrl();
 
-    console.log(sendUrl)
+    // console.log(sendUrl)
     window.open(`https://twitter.com/intent/tweet?text=${sendText}%0D%0A&&url=${sendUrl}`);
 }
 
@@ -91,5 +91,7 @@ function getSendUrl() {
     const type = window.location.pathname;
     const pathName = type == '/' ? '/randomnumberresult' : type + 'result';
 
-    return `https://${host}${pathName}?query=${result}`;
+    const doubleencode = encodeURIComponent(result);
+
+    return `https://${host}${pathName}?query=${doubleencode}`;
 }
