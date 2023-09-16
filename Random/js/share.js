@@ -91,5 +91,7 @@ function getSendUrl() {
     const type = window.location.pathname;
     const pathName = type == '/' ? '/randomnumberresult' : type + 'result';
 
-    return `https://${host}${pathName}?query=${result}`;
+    const doubleencode = encodeURIComponent(result);
+
+    return `https://${host}${pathName}?query=${doubleencode}`;
 }

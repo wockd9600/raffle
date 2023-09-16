@@ -118,9 +118,11 @@
     if (btnGetNumber) {
         btnGetNumber.addEventListener('click', () => {
             const currentUrl = decodeURIComponent(window.location.href);
-
             const queryString = currentUrl.split('query=')[1];
-            const objArr = queryString.split('|');
+            console.log(queryString)
+            const queryStringFilterDecode = decodeURIComponent(queryStringFilter);
+            console.log(queryStringFilterDecode)
+            const objArr = queryStringFilterDecode.split('|');
             const viewNow = parseInt(objArr[0]);
             const duplicate = parseInt(objArr[1]);
 
