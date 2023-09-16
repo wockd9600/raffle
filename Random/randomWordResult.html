@@ -119,6 +119,7 @@
         btnGetNumber.addEventListener('click', () => {
             const currentUrl = decodeURIComponent(window.location.href);
             const queryString = currentUrl.split('query=')[1];
+            const queryStringFilter = queryString.split('&')[0];
             console.log(queryString)
             const queryStringFilterDecode = decodeURIComponent(queryStringFilter);
             console.log(queryStringFilterDecode)
