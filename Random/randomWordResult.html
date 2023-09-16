@@ -31,11 +31,11 @@
 
     
     <!-- Facebook (Common) Open Graph -->
-    <meta name="type" content="website" />
-    <meta name="url" content="https://raffleuz.com/randomwordresult" />
-    <meta name="title" content="뽑기 결과(단어)" />
-    <meta name="description" content="뽑기 결과를 확인하세요!" />
-    <meta name="image" content="https://raffleuz.com/img/result_preview.jpg"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://raffleuz.com/randomwordresult" />
+    <meta property="og:title" content="뽑기 결과(단어)" />
+    <meta property="og:description" content="뽑기 결과를 확인하세요!" />
+    <meta property="og:image" content="https://raffleuz.com/img/result_preview.jpg"/>
 
     <!-- css -->
     <link rel="stylesheet" href="css/index.css" type="text/css">
@@ -120,7 +120,8 @@
             const currentUrl = decodeURIComponent(window.location.href);
 
             const queryString = currentUrl.split('query=')[1];
-            const objArr = queryString.split('|');
+            const queryStringFilterDecode = decodeURIComponent(queryStringFilter);
+            const objArr = queryStringFilterDecode.split('|');
             const viewNow = parseInt(objArr[0]);
             const duplicate = parseInt(objArr[1]);
 
