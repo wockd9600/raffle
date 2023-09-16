@@ -121,8 +121,7 @@
 
             const queryString = currentUrl.split('query=')[1];
             const queryStringFilter = queryString.split('&')[0];
-            const queryStringFilterDecode = decodeURIComponent(queryStringFilter);
-            const objArr = queryStringFilterDecode.split('|'); //%7C
+            const objArr = queryStringFilter.split('|'); //%7C
 
             
             const max = parseInt(objArr[0]);

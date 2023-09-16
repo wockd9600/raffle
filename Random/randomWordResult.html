@@ -120,8 +120,7 @@
             const currentUrl = decodeURIComponent(window.location.href);
 
             const queryString = currentUrl.split('query=')[1];
-            const queryStringFilterDecode = decodeURIComponent(queryStringFilter);
-            const objArr = queryStringFilterDecode.split('|');
+            const objArr = queryString.split('|');
             const viewNow = parseInt(objArr[0]);
             const duplicate = parseInt(objArr[1]);
 
