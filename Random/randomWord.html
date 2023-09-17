@@ -40,6 +40,8 @@
     <link rel="stylesheet" href="css/index.css" type="text/css">
     <link rel="stylesheet" href="css/random.css" type="text/css">
     <link rel="stylesheet" href="css/share.css" type="text/css">
+
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <style>
     .result {
@@ -158,6 +160,7 @@
                     <span id="btnTwitter" class="link-icon twitter" onclick="shareTwitter();"></span>
                     <span id="btnFacebook" class="link-icon facebook" onclick="shareFacebook();"></span>
                     <span id="btnKakao" class="link-icon kakao" onclick="shareKakao();"></span>
+                    <span id="btnKakaoOfResult" class="dn link-icon kakao" alt="카카오톡에 공유하기" onclick="shareKakao();"></span>
                     <span id="btnBand" class="link-icon band" onclick="shareBand();"></span>
                     <span id="btnUrl" class="link-icon url" onclick="shareUrl();"></span>
                 </div>
@@ -194,6 +197,8 @@
 
 <script type="module">
     import { startRaffle, getIsRaffling, setIsRafflingFalse } from "./js/util.js";
+
+    shareKakao();
 
     const inputWord = document.getElementById('word');
 
@@ -262,6 +267,9 @@
 
                     addColorOfBtnLotter();
                     document.getElementById('resultUrl').innerHTML = document.getElementById('tempResultUrl').innerHTML;
+
+                    shareKakaoOfResult();
+                    displayKakaoBtnOfResult();
                 })
                 .catch((error) => {
                     console.error(error);

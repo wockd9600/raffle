@@ -151,6 +151,7 @@
                 <span id="btnTwitter" class="link-icon twitter" alt="트위터에 공유하기" onclick="shareTwitter();"></span>
                 <span id="btnFacebook" class="link-icon facebook" alt="페이스북에 공유하기" onclick="shareFacebook();"></span>
                 <span id="btnKakao" class="link-icon kakao" alt="카카오톡에 공유하기" onclick="shareKakao();"></span>
+                <span id="btnKakaoOfResult" class="dn link-icon kakao" alt="카카오톡에 공유하기" onclick="shareKakao();"></span>
                 <span id="btnBand" class="link-icon band" alt="밴드에 공유하기" onclick="shareBand();"></span>
                 <span id="btnUrl" class="link-icon url" alt="URL 복사하기" onclick="shareUrl();"></span>
             </div>
@@ -184,6 +185,8 @@
 
 <script type="module">
     import { startRaffle, getIsRaffling, setIsRafflingFalse } from "./js/util.js";
+
+    shareKakao();
 
     // const main_width = window.innerWidth - 20 ;
 
@@ -238,6 +241,9 @@
 
                     addColorOfBtnLotter();
                     document.getElementById('resultUrl').innerHTML = document.getElementById('tempResultUrl').innerHTML;
+                    
+                    shareKakaoOfResult();
+                    displayKakaoBtnOfResult();
                 })
                 .catch((error) => {
                     console.error(error);

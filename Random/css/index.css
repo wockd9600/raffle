@@ -10,7 +10,8 @@ h1, h2, p, span { margin: 0; padding: 0; }
 
 .df { display: flex; }
 .df-rwd { display: flex; }
-.dn { display: none; }
+.dn { display: none !important; }
+.dib { display: inline-block !important;}
 .wf { width: fit-content; }
 .w100 { width: 100%; }
 .ml0 { margin-left: 0 !important;}

@@ -23,6 +23,27 @@ function cancelRaffle() {
     box.appendChild(span);
 
     addColorOfBtnLotter();
+    displayKakaoBtn();
+}
+
+function displayKakaoBtn() {
+    const btn1 = document.getElementById('btnKakao');
+    const btn2 = document.getElementById('btnKakaoOfResult');
+
+    btn1.classList.add('dib');
+    btn1.classList.remove('dn');
+    btn2.classList.add('dn');
+    btn2.classList.remove('dib');
+}
+
+function displayKakaoBtnOfResult() {
+    const btn1 = document.getElementById('btnKakao');
+    const btn2 = document.getElementById('btnKakaoOfResult');
+
+    btn2.classList.add('dib');
+    btn2.classList.remove('dn');
+    btn1.classList.add('dn');
+    btn1.classList.remove('dib');
 }
 
 function getShuffledArr(arr) {
