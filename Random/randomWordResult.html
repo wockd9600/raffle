@@ -44,10 +44,11 @@
 </head>
 <style>
     .result {
-        width: 737px;
         min-height: 70px;
         height: fit-content;
-        /* margin-bottom: 1rem; */
+        margin: auto;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
         border: 1px solid #9884fc;
         border-radius: 12px;
     }
@@ -77,21 +78,23 @@
         /* margin-left: 1.5rem; */
     }
 
-    .btn-display-result { margin-left: 0;}
+    .btn-display-result { margin-left: 0; margin: auto; }
 </style>
 
 <body>
     <div class="main el-center">
-        <!-- <h1>랜덤 단어 뽑기</h1> -->
-
-        <div class="raffle-body">
-            <div class="result df">
-                <div class="result_box w100">
+        <div class="px-20-rwd">
+            <!-- <h1>랜덤 단어 뽑기</h1> -->
+    
+            <div class="raffle-body">
+                <div class="result df">
+                    <div class="result_box w100">
+                    </div>
                 </div>
-            </div>
-
-            <div class="df el-center" style="margin-top: 1.5rem;">
-                <button type="button" class="btn btn-word btn-lottery btn-display-result">뽑기 결과 보기</button>
+    
+                <div style="margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-word btn-lottery btn-display-result w100-rwd">결과 보기</button>
+                </div>
             </div>
         </div>
     </div>

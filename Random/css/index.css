@@ -40,4 +40,5 @@ h1, h2, p, span { margin: 0; padding: 0; }
 
 @media (max-width: 767px) {
     .df-rwd { flex-direction: column; }
+    .w100-rwd { width: 100%; }
 }
