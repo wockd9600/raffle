@@ -236,7 +236,7 @@
                     setIsRafflingFalse();
 
                     const { arr, count } = result;
-                    const resultString = arr.filter((_, index) => count[index] !== 0).join("|");
+                    const resultString = arr.filter((_, index) => count[index] !== 0).join("_");
                     addValueResultUrl(resultString);
                     // document.getElementById('resultCount').innerHTML = count;
                     // const checkResult = arr.filter((_, index) => count[index] !== 0 );

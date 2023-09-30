@@ -33,7 +33,7 @@ function startRaffle(data) {
                 setTimeout(() => {
                     const span = document.getElementsByClassName('span')[i];
                     
-                    let speed = 40;
+                    let speed = 30;
                     
                     let index = shuffleIndex[i];
                     
@@ -103,7 +103,7 @@ function displayRaffleResult(data) {
                 setTimeout(() => {
                     const span = document.getElementsByClassName('span')[i];
                     
-                    let speed = 40;
+                    let speed = 30;
                     
                     let index = shuffleIndex[i];
                     
